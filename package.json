@@ -11,5 +11,5 @@
     "request": "^2.51.0",
     "xml2json": "^0.6.1"
   },
-  "repository": "git://github.com/jpillora/node-edit-google-spreadsheet.git"
+  "repository": "git://github.com/rudymalhi/node-edit-google-spreadsheet.git"
 }
