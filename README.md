@@ -127,6 +127,70 @@ Set metadata
 
 ***WARNING: all cells outside the range of the new size will be silently deleted***
 
+#### Worksheets
+
+Add worksheet - when loading a spreadsheet, add the "createWorksheet" option and a new worksheet will be created if the worksheetName is not found.
+
+``` js
+  Spreadsheet.load(
+    {
+      worksheetName: 'New sheet',
+      createWorksheet: true,
+      ...
+    }, function sheetReady(err, spreadsheet) {
+      if(err) throw err;
+    }
+  );
+```
+
+#### Rows API
+
+Get rows
+
+``` js
+  function sheetReady(err, spreadsheet) {
+    if(err) throw err;
+    
+    spreadsheet.getRows({name: "test 1"}, function(err, rows){
+      if(err) throw err;
+      console.log(rows);
+    });
+  }
+```
+
+Add row
+
+``` js
+  function sheetReady(err, spreadsheet) {
+    if(err) throw err;
+    
+    spreadsheet.addRow({name: "test 2", col1: 2, col2: 4, col3: 6}, function(err, row) {
+      if(err) throw err;
+      console.log(row);
+    })
+```
+
+Update row
+
+``` js
+  function sheetReady(err, spreadsheet) {
+    if(err) throw err;
+    
+    spreadsheet.getRows({name: "test 1"}, function(err, rows) {
+      if (err) {
+        return console.error('Cannot get rows ', err);
+      }
+      var firstRow = rows[0];
+      firstRow.raw["gsx:col1"] = {"$t" : 5};
+      spreadsheet.updateRow(firstRow, function(err) {
+        if (err) {
+          return console.error('Cannot update row ', err);
+        }
+        console.log('Done');
+      });
+    });
+```
+
 #### More `add` Examples
 
 Batch edit:
