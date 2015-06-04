@@ -20,16 +20,31 @@ Spreadsheet.load(
 		if (err) {
 			return console.log(err);
 		}
-		spreadsheet.addRow({name: "test", col1: 1, col2: 2, col3: 3}, function(err, result) {
+		spreadsheet.addRow({name: "test 1", col1: 1, col2: 2, col3: 3}, function(err, result) {
 			if (err) {
 				return console.error('Cannot add row', err);
 			}
-			console.log('Row added', result);
+			console.log('Row added', result.entry.content);
 			spreadsheet.addRow({name: "test 2", col1: 2, col2: 4, col3: 6}, function(err, result) {
 				if (err) {
 					return console.error('Cannot add row', err);
 				}
-				console.log('Row added', result);
+				console.log('Row added', result.entry.content);
+
+				// try to update the "test 1" row
+				spreadsheet.getRows({name: "test 1"}, function(err, rows) {
+					if (err) {
+						return console.error('Cannot get rows ', err);
+					}
+					var firstRow = rows[0];
+					firstRow.raw["gsx:col1"] = {"$t" : 5};
+					spreadsheet.updateRow(firstRow, function(err) {
+						if (err) {
+							return console.error('Cannot update row ', err);
+						}
+						console.log('Done');
+					});
+				});
 			});
 		});
 	}
