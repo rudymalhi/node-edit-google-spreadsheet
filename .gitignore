@@ -1,4 +1,5 @@
 node_modules/
 example/creds.json
 example/oauth2-creds.json
+example/auth-data.js
 browseroauth2/
