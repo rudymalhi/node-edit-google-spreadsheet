@@ -11,7 +11,7 @@ var authClient = new google.auth.JWT(
 
 Spreadsheet.load(
 	{
-		spreadsheetId: '1z_H4G6McjztvuWgpq7nnfg3xcTHjFcud-p_X3Hefq7g',
+		spreadsheetId: '1rlzb8W8bgJUlDxmUNQwhQgyjsgxV5SmToGrZ46c5UYQ',
 		worksheetName: 'Lookup Data',
 		createWorksheet: true,
 		oauth: authClient,
