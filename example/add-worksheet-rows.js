@@ -11,7 +11,7 @@ var authClient = new google.auth.JWT(
 
 Spreadsheet.load(
 	{
-		spreadsheetId: '1rlzb8W8bgJUlDxmUNQwhQgyjsgxV5SmToGrZ46c5UYQ',
+		spreadsheetId: '1EdkGbCHyUrm2Ge1lW0nTgu5shNCKVNCyNWhpGuYfSkg',
 		worksheetName: 'Lookup Data',
 		createWorksheet: true,
 		oauth: authClient,
@@ -20,12 +20,12 @@ Spreadsheet.load(
 		if (err) {
 			return console.log(err);
 		}
-		spreadsheet.addRow({name: "test 1", col1: 1, col2: 2, col3: 3}, function(err, result) {
+		spreadsheet.addRow({name: "test 1", "2015/01": 1, col2: 2, col3: 3}, function(err, result) {
 			if (err) {
 				return console.error('Cannot add row', err);
 			}
 			console.log('Row added', result.entry.content);
-			spreadsheet.addRow({name: "test 2", col1: 2, col2: 4, col3: 6}, function(err, result) {
+			spreadsheet.addRow({name: "test 2", "2015/01": 2, col2: 4, col3: 6}, function(err, result) {
 				if (err) {
 					return console.error('Cannot add row', err);
 				}
